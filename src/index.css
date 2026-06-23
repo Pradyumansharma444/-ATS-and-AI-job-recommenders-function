@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 142 76% 45%; /* Mint/Green accent */
+    --primary-foreground: 222 47% 11%;
+    --secondary: 270 100% 95%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 270 100% 95%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 222 47% 11%; /* Keep borders dark/black for neo-brutalist theme */
+    --input: 220 13% 91%;
+    --ring: 142 76% 45%;
+    --radius: 0.75rem;
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+    background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Neo-brutalist buttons */
+  .btn-neo {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-black font-bold text-base transition-all duration-150 select-none shadow-[3px_3px_0px_0px_#000000];
+    background-color: #ffffff;
+    color: #111827;
+  }
+
+  .btn-neo:hover {
+    @apply -translate-x-0.5 -translate-y-0.5 shadow-[5px_5px_0px_0px_#000000];
+  }
+
+  .btn-neo:active {
+    @apply translate-x-0.5 translate-y-0.5 shadow-[1px_1px_0px_0px_#000000];
+  }
+
+  .btn-neo-primary {
+    @apply btn-neo;
+    background-color: #86EFAC; /* mint green like codefa.st instant access */
+  }
+
+  .btn-neo-secondary {
+    @apply btn-neo;
+    background-color: #C084FC; /* soft purple */
+  }
+
+  .btn-neo-accent {
+    @apply btn-neo;
+    background-color: #FDE047; /* soft yellow */
+  }
+
+  /* Neo-brutalist cards */
+  .card-neo {
+    @apply bg-white border-2 border-black rounded-2xl p-6 shadow-[4px_4px_0px_0px_#000000] transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000];
+  }
+
+  .card-neo-yellow {
+    @apply card-neo;
+    background-color: #FEF08A;
+  }
+
+  .card-neo-purple {
+    @apply card-neo;
+    background-color: #F3E8FF;
+  }
+
+  .card-neo-mint {
+    @apply card-neo;
+    background-color: #F0FDF4;
+  }
+
+  .score-ring {
+    transform: rotate(-90deg);
+  }
+
+  .score-ring__progress {
+    transition: stroke-dashoffset 1.5s ease-out;
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .content-max {
+    @apply max-w-6xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .text-h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 850;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .text-h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .text-body {
+    font-size: 1rem;
+    font-weight: 450;
+    line-height: 1.6;
+  }
+
+  .text-small {
+    font-size: 0.875rem;
+    font-weight: 450;
+    line-height: 1.5;
+  }
+
+  .text-muted {
+    color: #4b5563 !important; /* Dark slate gray for high contrast visibility */
+  }
+
+  .text-slate {
+    color: #374151 !important; /* Deep dark charcoal for high contrast visibility */
+  }
+
+  .text-micro {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .text-score {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .color-success {
+    color: #15803d;
+  }
+
+  .color-warning {
+    color: #b45309;
+  }
+
+  .color-error {
+    color: #b91c1c;
+  }
+
+  .bg-success-light {
+    background-color: #dcfce7;
+  }
+
+  .bg-warning-light {
+    background-color: #fef3c7;
+  }
+
+  .bg-error-light {
+    background-color: #fee2e2;
+  }
+
+  .border-success {
+    border-color: #15803d;
+  }
+
+  .border-warning {
+    border-color: #b45309;
+  }
+
+  .border-error {
+    border-color: #b91c1c;
+  }
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #E5E7EB;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #A855F7;
+  border-radius: 3px;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid #A855F7;
+  outline-offset: 2px;
+}
